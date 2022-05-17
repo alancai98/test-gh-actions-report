@@ -2,8 +2,8 @@ name: Test Upload to GitHub Actions
 on: [push, pull_request]
 
 jobs:
+  runs-on: ubuntu-latest
   steps:
   - uses: actions/upload-artifact@v3
     with:
-      name: test-report-1
       path: test_report_1.json
