@@ -1,0 +1,14 @@
+name: Test Upload to GitHub Actions
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: upload-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v2
+      - name: Upload test_report_1.json
+        uses: actions/upload-artifact@v3
+        with:
+          path: test_report_1.json
