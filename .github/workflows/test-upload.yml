@@ -23,6 +23,5 @@ jobs:
         uses: peter-evans/create-or-update-comment@v2
         with:
           issue-number: ${{ steps.find-pull-request.outputs.number }}
-          comment-author: 'github-actions[bot]'
           body: |
             My comment
