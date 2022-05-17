@@ -17,3 +17,5 @@ jobs:
         with:
           workflow: test-upload.yml
           branch: main
+      - name: print markdown in run
+        run: cat results.md >> $GITHUB_STEP_SUMMARY
