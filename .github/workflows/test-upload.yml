@@ -6,6 +6,9 @@ jobs:
     name: upload-test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/upload-artifact@v3
+      - name: Git Checkout
+        uses: actions/checkout@v2
+      - name: Upload test_report_1.json
+        uses: actions/upload-artifact@v3
         with:
           path: test_report_1.json
