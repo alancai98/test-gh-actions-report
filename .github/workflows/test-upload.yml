@@ -19,5 +19,5 @@ jobs:
           branch: main
       - name: Display structure of downloaded files
         run: ls -R
-      - name: `cat` test_report_1.json
+      - name: cat test_report_1.json
         run: cat ./artifact/test_report_1.json
