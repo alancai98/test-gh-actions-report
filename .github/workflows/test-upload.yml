@@ -19,3 +19,10 @@ jobs:
           branch: main
       - name: print markdown in run
         run: cat results.md >> $GITHUB_STEP_SUMMARY
+      - name: create comment with results
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          issue-numer: ${{ steps.find-pull-request.outputs.number }}
+          comment-author: 'github-actions[bot]'
+          body: |
+            My comment
