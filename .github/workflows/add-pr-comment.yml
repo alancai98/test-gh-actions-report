@@ -1,0 +1,8 @@
+name: Test Upload to GitHub Actions
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: upload-test
+    runs-on: ubuntu-latest
+    steps:
