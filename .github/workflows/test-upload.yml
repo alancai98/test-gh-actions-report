@@ -22,7 +22,7 @@ jobs:
       - name: create comment with results
         uses: peter-evans/create-or-update-comment@v2
         with:
-          issue-numer: ${{ steps.find-pull-request.outputs.number }}
+          issue-number: ${{ steps.find-pull-request.outputs.number }}
           comment-author: 'github-actions[bot]'
           body: |
             My comment
