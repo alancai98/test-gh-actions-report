@@ -11,4 +11,5 @@ jobs:
       - name: Upload test_report_1.json
         uses: actions/upload-artifact@v3
         with:
+          name: test_report_1.json
           path: test_report_1.json
