@@ -27,13 +27,18 @@ jobs:
           issue-number: ${{ github.event.pull_request.number }}
           comment-author: 'github-actions[bot]'
           body-includes: Conformance report
+      - id: get-comment-body
+        run: |
+          body="$(cat ./results.md)"
+          body="${body//'%'/'%25'}"
+          body="${body//$'\n'/'%0A'}"
+          body="${body//$'\r'/'%0D'}"
+          echo "::set-output name=body::$body"
       - name: Create or update comment
         uses: peter-evans/create-or-update-comment@v2
         if: github.event_name == 'pull_request'
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
-          body: |
-            ### Conformance report rendered test
-            ${{ steps.build.outputs.build-log }}
+          body: ${{ steps.get-comment-body.outputs.body }}
           edit-mode: replace
