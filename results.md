@@ -9,3 +9,4 @@ Success in old, failure in new:
 
 Failure in old, success in new:
 - success5
+- test_foo
