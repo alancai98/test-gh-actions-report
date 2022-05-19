@@ -5,6 +5,8 @@ jobs:
   build:
     name: upload-test
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
     steps:
       - name: Git Checkout
         uses: actions/checkout@v2
