@@ -42,7 +42,14 @@ jobs:
           issue-number: ${{ github.event.pull_request.number }}
           body: ${{ steps.get-comment-body.outputs.body }}
           edit-mode: replace
-      - run: echo hello > foo.txt
-      - run: pwd
-      - run: ls .
-      - run: cat foo.txt
+      - name: Rust Toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+      - name: Cargo Test
+        uses: actions-rs/cargo@v1
+        with:
+          command: test
+          args: --verbose -- -Z unstable-options --format json
