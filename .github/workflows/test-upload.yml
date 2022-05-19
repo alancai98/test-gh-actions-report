@@ -48,4 +48,5 @@ jobs:
           profile: minimal
           toolchain: stable
           override: true
-      - run: cargo test --verbose -- -Z unstable-options --format json | tee test.json && cat test.json
+      - run: cargo test --verbose -- -Z unstable-options --format json | tee test.json
+      - run: cat test.json
