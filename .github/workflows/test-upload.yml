@@ -48,9 +48,4 @@ jobs:
           profile: minimal
           toolchain: stable
           override: true
-      - name: Cargo Test
-        uses: actions-rs/cargo@v1
-        continue-on-error: true
-        with:
-          command: test
-          args: --verbose -- -Z unstable-options --format json | tee test.json && cat test.json
+      - run: cargo test --verbose -- -Z unstable-options --format json | tee test.json && cat test.json
