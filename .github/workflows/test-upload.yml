@@ -53,5 +53,5 @@ jobs:
         continue-on-error: true
         with:
           command: test
-          args: --verbose -- -Z unstable-options --format json > test.json
+          args: --verbose -- -Z unstable-options --format json | tee test.json
       - run: cat test.json
