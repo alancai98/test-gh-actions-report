@@ -17,6 +17,9 @@ jobs:
         with:
           workflow: test-upload.yml
           branch: main
+      - name: backup case if download fails
+        if: ${{ failure() }}
+        run: cat test_report_1.json
       - name: print markdown in run
         run: cat results.md >> $GITHUB_STEP_SUMMARY
       - name: Find Comment
