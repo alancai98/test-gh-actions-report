@@ -11,12 +11,20 @@ jobs:
       - name: Upload test_report_1.json
         uses: actions/upload-artifact@v3
         with:
+          name: main-branch-report
           path: test_report_1.json
       - name: Download test_report_1.json from `main` branch
         uses: dawidd6/action-download-artifact@v2
+        id: download-report
+        continue-on-error: true
         with:
           workflow: test-upload.yml
           branch: main
+#          path: test/test_report_1.json
+      - run: ls -R .
+      - name: backup case if download fails
+        if: ${{ steps.download-report.outcome == 'failure' }}
+        run: cat test_report_1.json
       - name: print markdown in run
         run: cat results.md >> $GITHUB_STEP_SUMMARY
       - name: Find Comment
@@ -42,3 +50,11 @@ jobs:
           issue-number: ${{ github.event.pull_request.number }}
           body: ${{ steps.get-comment-body.outputs.body }}
           edit-mode: replace
+      - name: Rust Toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+      - run: cargo test --verbose -- -Z unstable-options --format json | tee test.json
+      - run: cat test.json
