@@ -1,5 +1,5 @@
 {
-  "commit_hash": "abcdef12",
+  "commit_hash": "new_commit_id",
   "failure": [
     "failure1",
     "failure2",
