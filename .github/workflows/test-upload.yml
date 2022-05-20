@@ -14,7 +14,7 @@ jobs:
           path: test_report_1.json
       - name: Download test_report_1.json from `main` branch
         uses: dawidd6/action-download-artifact@v2
-        continue-on-error: false
+        continue-on-error: true
         with:
           workflow: test-upload.yml
           branch: main
