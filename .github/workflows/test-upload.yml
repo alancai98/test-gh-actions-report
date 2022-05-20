@@ -20,7 +20,6 @@ jobs:
         with:
           workflow: test-upload.yml
           branch: main
-          path: main-branch-report
       - run: ls -R .
       - run: cat test_report_1.json
       - run: cat ./main-branch-report/test_report_1.json
